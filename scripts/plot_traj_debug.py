@@ -10,8 +10,8 @@ except FileNotFoundError:
     exit()
 
 # Select specific (N, r) for visualization
-N_plot = 1000
-r_plot = 1.05
+N_plot = 20
+r_plot = 0.8
 time_range = (0, 200)  # Set the desired time range
 
 # Normalize column names (remove unwanted spaces)

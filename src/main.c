@@ -9,7 +9,8 @@
     #include <sys/stat.h>  // For mkdir() on Linux/Mac
 #endif
 
-#define N_SIM 5000   // Number of MC simulations
+//#define N_SIM 10000   // Number of MC simulations
+#define N_SIM 10000
 //#define DT 0.001       // Time step for ODE integration
 //int K = (int)(10000);  //scalling precision in the set [0, T(N)] (FOR COMPUTING THE SUPREMUM DEVIATION)
 //int K = (int)(1); //(USELESS IF LOOKING AT THE TIME OF ABSORPTION)
@@ -103,13 +104,18 @@ void simulate_moran_process() {
     fprintf(file_out, "N,r,Type,Sim_ID,Time,Value,std_sup_dev\n");
     fprintf(abs_out, "N,r,Sim_ID,AbsorptionTime\n");
 
-    //int N_values[] = {100, 500, 1000, 2000};
-    int N_values[] = {10, 20, 50, 70, 100, 150, 200, 250, 300, 350, 400, 500, 750, 1000};
-    //int N_values[] = {10, 20, 50, 70, 100, 150, 200, 250, 300, 350, 400, 500, 750, 1000, 1250, 1500};
+    int N_values[] = {50, 100, 300, 1000};
+    //int N_values[] = {10, 20, 30, 50, 60, 70, 80, 90, 100, 120, 150, 200, 300};
+    //int N_values[] = {500};
+    //int N_values[] = {10, 20, 50, 70, 100, 150, 200, 250, 300};//, 350, 400, 450, 500};//, 550, 600, 650, 700, 750, 800, 850, 900, 950,1000}; //, 1250, 1500};
+    //int N_values[] = {10, 20, 50, 70, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900,1000};
     //int N_values[] = {1, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000};
     //int N_values[] = {10, 20, 50, 70, 100, 150, 200, 250, 300, 350, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2500};
     //int N_values[] = {500, 700, 1000, 1500, 2000, 3000};
-    double r_values[] = {1.05, 1.1, 1.2, 1.5};
+    //double r_values[] = {1.05, 1.1, 1.2, 1.5};
+    double r_values[] = {0.8};
+    //double r_values[] = {0.9};
+    //double r_values[] = {1.3, 1.4};
     //double r_values[] = {1.01, 1.03, 1.05, 1.07, 1.1, 1.2, 1.3, 1.5};
     //double r_values[] = {1.3, 1.2, 1.1, 1.03};
     int N_size = sizeof(N_values) / sizeof(N_values[0]);
@@ -118,16 +124,23 @@ void simulate_moran_process() {
 
     srand(123456);
     //srand(time(NULL));
+    
+    double hh = 0.3;
 
     for (int i = 0; i < N_size; i++) {
         for (int j = 0; j < r_size; j++) {
             int N = N_values[i];
             double r = r_values[j];
             double T_N = 500;
+            //double T_N = 100;
             //double T_N = log(N);
+            double res_fitness = 1-r;
+            //double T_N = 1/(res_fitness)*floor(exp( (log(2)*log(2)*pow(N, hh))/(2*res_fitness) ));
+            printf("1-r=%.6f\n", res_fitness);
+            printf("T_N=%.6f\n", T_N);
 
-            //int K = (int)(10000);  //scalling precision in the set [0, T(N)] (FOR COMPUTING THE SUPREMUM DEVIATION)
-            int K = (int)(1); //(USELESS IF LOOKING AT THE TIME OF ABSORPTION)
+            int K = (int)(10000);  //scalling precision in the set [0, T(N)] (FOR COMPUTING THE SUPREMUM DEVIATION)
+            //int K = (int)(1); //(USELESS IF LOOKING AT THE TIME OF ABSORPTION)
             double DT_adaptive = T_N / K;
             int steps = (int)(T_N / DT_adaptive) + 1;
 
@@ -158,7 +171,8 @@ void simulate_moran_process() {
             double total_sup_deviation_sq = 0.0;
 
             for (int sim = 0; sim < N_SIM; sim++) {
-                int X = N / 2;
+                //int X = N / 2;
+                int X = N-1;
                 double t = 0.0;
                 double *moran_t = (double *)malloc(steps * sizeof(double));
                 double *moran_x = (double *)malloc(steps * sizeof(double));

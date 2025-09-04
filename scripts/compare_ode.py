@@ -19,8 +19,8 @@ file_path = "data/moran_simulation_results.csv"
 df = pd.read_csv(file_path)
 
 # Select specific (N, r) for visualization
-N_plot = 1000
-r_plot = 1.3
+N_plot = 300
+r_plot = 0.8
 
 # Filter ODE solution from main.c
 df_ode = df[(df["N"] == N_plot) & (df["r"] == r_plot) & (df["Type"].str.strip() == "ODE")].copy()

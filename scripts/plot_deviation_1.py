@@ -15,7 +15,7 @@ r_values = sorted(data["r"].unique())
 n_sim = 1000  # This should match N_SIM in main.c
 
 #Deviation plots
-fig1, axes = plt.subplots(1, 2, figsize=(12, 5))
+fig1, axes = plt.subplots(1, figsize=(12, 5))
 
 scaling_exponents = {}
 
@@ -40,27 +40,12 @@ for r in r_values:
     slope, intercept, _, _, _ = linregress(N, log_mean_dev)
     scaling_exponents[r] = slope
 
-    axes[0].errorbar(N, mean_dev, yerr=CI_95, #marker='o', 
-                     linestyle='-', capsize=5, label=f"r={r}")
-    axes[1].errorbar(log_N, log_mean_dev, yerr=CI_log_95, #marker='o',
-                      linestyle='-', capsize=5, label=f"r={r}")
+    axes.errorbar(N, mean_dev, yerr=CI_95, marker='o', linestyle='-', capsize=5, label=f"r={r}")
+    
+axes.set_xlabel("Population size N")
+axes.set_ylabel(r"$E[\sup_{t \in [0,T(N)]} |X(t)/N - x(t)|]$")
+#axes.set_title("Supremum deviation")
+axes.legend()
+#axes.grid()
 
-axes[0].set_xlabel("Population size N")
-axes[0].set_ylabel(r"$E[\sup_{t \in [0,T(N)]} |X(t)/N - x(t)|]$")
-#axes[0].set_title("Supremum deviation")
-axes[0].legend()
-#axes[0].grid()
-
-axes[1].set_xlabel("Log N")
-axes[1].set_ylabel(r"$\log E[\sup_{t \in [0,T(N)]} |X(t)/N - x(t)|]$")
-#axes[1].set_title("Log supremum deviation")
-axes[1].legend()
-#axes[1].grid()
-
-plt.tight_layout()
 plt.show() 
-
-#Print Scaling Exponents
-for r, slope in scaling_exponents.items():
-    print(f"For r = {r}, estimated scaling exponent: {slope:.4f}")
-

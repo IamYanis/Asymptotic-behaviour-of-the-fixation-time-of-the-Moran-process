@@ -1,5 +1,26 @@
+With the Terminal, go to the correspond file: Moran_project_ode, then
+
+To compile the Deviation Computation (Supremum Deviation Calculation), write:
+
+gcc -o moran_sim src/main.c -I"C:/msys64/mingw64/include" -L"C:/msys64/mingw64/lib" -lgsl -lgslcblas -lm
+
+To run the Moran Stochastic Simulation:
+
+./moran_sim
+
+To use the python scripts:
+
+python scripts/example_programme.py
 
 
+
+
+
+
+
+
+
+-- Old --
 
 With the Terminal, go to the correspond file: Moran_deviation_CI_hist, then
 
