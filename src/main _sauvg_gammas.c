@@ -12,7 +12,7 @@
 #endif
 
 //#define N_SIM 10000   // Number of MC simulations
-#define N_SIM 1000
+#define N_SIM 10000
 //#define DT 0.001       // Time step for ODE integration
 //int K = (int)(10000);  //scalling precision in the set [0, T(N)] (FOR COMPUTING THE SUPREMUM DEVIATION)
 //int K = (int)(1); //(USELESS IF LOOKING AT THE TIME OF ABSORPTION)
@@ -133,7 +133,7 @@ void simulate_moran_process() {
     //fprintf(file_out, "N,gamma,r,Type,Sim_ID,Time,Value,std_sup_dev\n");
     //fprintf(abs_out, "N,gamma,r,Sim_ID,AbsorptionTime,AbsorbingState,Absorbed\n");
 
-    int N_values[] = {100, 1000, 10000, 20000};
+    int N_values[] = {1000};
     //int N_values[] = {10, 20, 30, 50, 60, 70, 80, 90, 100, 120, 150, 200, 300};
     //int N_values[] = {500};
     //int N_values[] = {10, 20, 50, 70, 100, 150, 200, 250, 300};//, 350, 400, 450, 500};//, 550, 600, 650, 700, 750, 800, 850, 900, 950,1000}; //, 1250, 1500};
@@ -145,8 +145,7 @@ void simulate_moran_process() {
 
 
 //double gamma_values[] = {.4, .5, .7, .8, .9, 1.0, 1.1, 1.2};
-//double gamma_values[] = {.5, .6, .7, .8, .9, 1.0, 1.1, 1.2};
-double gamma_values[] = {1};
+double gamma_values[] = {.5, .6, .7, .8, .9, 1.0, 1.1, 1.2};
 //double gamma_values[] = {.5,.525, .55,.575, .6,.625, .65,.675, .7, .725, .75,.775, .8,.825, .85,.875,  .9, .925, .95,.975, 1.0, 1.025, 1.05,1.075, 1.1,1.125, 1.15, 1.175, 1.2,1.225, 1.25,1.275, 1.3,1.325, 1.35,1.375, 1.4,1.425, 1.45,1.475, 1.5};
 
     int N_size = sizeof(N_values)/sizeof(N_values[0]);
@@ -177,8 +176,7 @@ double gamma_values[] = {1};
             double gamma = gamma_values[j];
             //double r = r_values[j];
             double r = 1.0 - pow(N, -gamma);
-            //double r = 0.6;
-            double T_N = 10000.0;
+            double T_N = 10000;
             //double T_N = 100;
             //double T_N = log(N);
             double res_fitness = fabs(r-1);
@@ -224,7 +222,8 @@ double gamma_values[] = {1};
             double total_sup_deviation_sq = 0.0;
 
             for (int sim = sim_start; sim < N_SIM; sim++) {
-                int X = N / 2;
+                //int X = N / 2;
+                int X = N/2;
                 //int X = N-1; 
                 //int X = N/2;
                 //int X = .7 * N; 
