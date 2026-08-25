@@ -43,17 +43,13 @@ Consider a population of fixed size \(N\), with \(X_t\) individuals of one type 
 
 The process evolves as a continuous-time birth-death process with transition rates
 
-\[
-q_{X,X+1}
-=
+\[q_{X,X+1}=
 \frac{(N-X)rX}{rX+(N-X)},
 \]
 
 and
 
-\[
-q_{X,X-1}
-=
+\[q_{X,X-1}=
 \frac{(N-X)X}{rX+(N-X)},
 \]
 
