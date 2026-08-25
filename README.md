@@ -389,7 +389,7 @@ The simulations can be used to study:
 
 These numerical experiments provide evidence for understanding the asymptotic behaviour of the model as
 
-$N \longrightarrow \infty.$
+${N \longrightarrow \infty.}$
 
 ---
 
