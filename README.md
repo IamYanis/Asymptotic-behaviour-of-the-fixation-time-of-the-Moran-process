@@ -49,29 +49,29 @@ $
 
 and
 
-\[q_{X,X-1}=\frac{(N-X)X}{rX+(N-X)},\]
+$q_{X,X-1}=\frac{(N-X)X}{rX+(N-X)},$
 
 where \(r\) is the relative fitness parameter.
 
 The states
 
-\[
+$
 X=0
 \qquad\text{and}\qquad
 X=N
-\]
+$
 
 are absorbing.
 
 The normalized population is
 
-\[
+$
 x_t = \frac{X_t}{N}.
-\]
+$
 
 For large \(N\), the stochastic process can be compared with the deterministic solution of
 
-\[\frac{dx}{dt}=\frac{(r-1)x(1-x)}{rx+(1-x)}.\]
+$\frac{dx}{dt}=\frac{(r-1)x(1-x)}{rx+(1-x)}.$
 
 The goal of this repository is to numerically investigate this approximation and the asymptotic behaviour of the process near absorption.
 
@@ -111,12 +111,12 @@ It:
 - interpolates trajectories on the ODE time grid,
 - computes the supremum deviation
 
-\[
+$
 \sup_{t\in[0,T_N]}
 \left|
 \frac{X_t}{N}-x(t)
 \right|.
-\]
+$
 
 ### `scripts/plot_traj.py`
 
@@ -126,7 +126,7 @@ Plots simulated Moran trajectories together with the deterministic ODE solution.
 
 Studies the mean supremum deviation between the normalized Moran process and its deterministic approximation as a function of \(N\):
 
-\[
+$
 \mathbb{E}
 \left[
 \sup_{t\in[0,T(N)]}
@@ -134,7 +134,7 @@ Studies the mean supremum deviation between the normalized Moran process and its
 \frac{X_t}{N}-x(t)
 \right|
 \right].
-\]
+$
 
 The script also provides a logarithmic representation that can be used to investigate the scaling with respect to \(N\).
 
@@ -368,13 +368,9 @@ The continuous-time Moran process is simulated using exponentially distributed w
 
 If the total transition rate at the current state is \(\lambda\), the waiting time until the next event is
 
-\[
-\Delta t
-=
--\frac{\log U}{\lambda},
-\qquad
-U\sim\operatorname{Uniform}(0,1).
-\]
+$
+\Delta t=-\frac{\log U}{\lambda},\qquad U\sim\operatorname{Uniform}(0,1).
+$
 
 The deterministic approximation is solved numerically using the ODE routines provided by GSL.
 
@@ -393,9 +389,9 @@ The simulations can be used to study:
 
 These numerical experiments provide evidence for understanding the asymptotic behaviour of the model as
 
-\[
+$
 N \longrightarrow \infty.
-\]
+$
 
 ---
 
