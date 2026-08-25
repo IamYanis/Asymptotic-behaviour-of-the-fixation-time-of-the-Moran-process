@@ -387,9 +387,7 @@ The simulations can be used to study:
 3. the distribution of the absorption/fixation time,
 4. possible limiting distributions after appropriate centering and scaling.
 
-These numerical experiments provide evidence for understanding the asymptotic behaviour of the model as
-
-${N \longrightarrow \infty.}$
+These numerical experiments provide evidence for understanding the asymptotic behaviour of the model as ${N \rightarrow \infty.}$
 
 ---
 
