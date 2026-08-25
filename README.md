@@ -49,9 +49,7 @@ The process evolves as a continuous-time birth-death process with transition rat
 
 and
 
-\[q_{X,X-1}=
-\frac{(N-X)X}{rX+(N-X)},
-\]
+\[q_{X,X-1}=\frac{(N-X)X}{rX+(N-X)},\]
 
 where \(r\) is the relative fitness parameter.
 
@@ -73,12 +71,7 @@ x_t = \frac{X_t}{N}.
 
 For large \(N\), the stochastic process can be compared with the deterministic solution of
 
-\[
-\frac{dx}{dt}
-=
-\frac{(r-1)x(1-x)}
-     {rx+(1-x)}.
-\]
+\[\frac{dx}{dt}=\frac{(r-1)x(1-x)}{rx+(1-x)}.\]
 
 The goal of this repository is to numerically investigate this approximation and the asymptotic behaviour of the process near absorption.
 
